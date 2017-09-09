@@ -1,0 +1,21 @@
+﻿@model PortfolioManager.ViewModels.StockListViewModel
+@{
+    ViewBag.Title = "GetTopStocks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetTopStocks</h2>
+
+<table style="width:60%">
+    <tr>
+        <th>Stock Symbol</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var stock in Model.StockList)
+    {
+        <tr>
+            <td>@stock.Symbol</td>
+            <td>@stock.OriginalPrice</td>
+        </tr>
+    }
+</table>
