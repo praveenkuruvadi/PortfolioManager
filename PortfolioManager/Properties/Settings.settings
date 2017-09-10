@@ -5,5 +5,8 @@
     <Setting Name="APIKEY" Type="System.String" Scope="Application">
       <Value Profile="(Default)">U30NYFOST2VO88T0</Value>
     </Setting>
+    <Setting Name="NewsApiKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">a27e5eda935142c49beda801ee655626</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

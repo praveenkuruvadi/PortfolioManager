@@ -4,12 +4,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace PortfolioManager.Controllers
 {
     public class CustomerController : Controller
     {
+        private ApplicationDbContext _content;
+
+        public CustomerController()
+        {
+            _content = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _content.Dispose();
+        }
         // GET: Customer
         public ActionResult Index()
         {
@@ -18,15 +29,14 @@ namespace PortfolioManager.Controllers
 
         public ActionResult CustomerList()
         {
-            var customers = new CustomerListViewModel
-            {
-                CustomerList = new List<Customer>
-            {
-                new Customer{ CustomerId = 1, CustomerName = "Customer 1", CustomerBalance = 0},
-                new Customer{ CustomerId = 2, CustomerName = "Customer 2", CustomerBalance = 0}
-            }
-            };
+            var customers = _content.Customers.Include(x => x.CustomerPortfolio);
             return View(customers);
+        }
+
+        public ActionResult CustomerDetails(int id)
+        {
+            var customerDetail = _content.Customers.SingleOrDefault(x => x.CustomerId.Equals(id));
+            return View(customerDetail);
         }
 
     }

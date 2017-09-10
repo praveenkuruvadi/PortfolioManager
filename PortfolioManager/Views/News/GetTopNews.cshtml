@@ -1,0 +1,18 @@
+﻿@model IEnumerable<PortfolioManager.CoreLogic.ResponseJsons.ResponseNewsJson>
+@{
+    ViewBag.Title = "TopNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Top News</h2>
+<div class="container">
+    @foreach(var response in Model)
+    {
+        <div class="well">
+            <a href=@response.url><h3>@response.title</h3></a>
+            <p>@response.description</p>
+            <center><img src=@response.urlToImage alt="Unable to get image" style="width:304px;height:228px;"></center>
+        </div>
+    }
+</div>
+

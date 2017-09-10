@@ -31,5 +31,14 @@ namespace PortfolioManager.Properties {
                 return ((string)(this["APIKEY"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("a27e5eda935142c49beda801ee655626")]
+        public string NewsApiKey {
+            get {
+                return ((string)(this["NewsApiKey"]));
+            }
+        }
     }
 }

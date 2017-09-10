@@ -192,9 +192,12 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="CoreLogic\AlphaVantageApi.cs" />
     <Compile Include="CoreLogic\Interfaces\IApiQueryBuilder.cs" />
+    <Compile Include="CoreLogic\NewsApi.cs" />
+    <Compile Include="CoreLogic\ResponseJsons\ResponseNewsJson.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,7 +225,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\CustomerListViewModel.cs" />
     <Compile Include="ViewModels\StockListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -290,6 +292,8 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customer\CustomerList.cshtml" />
     <Content Include="Views\Stock\GetTopStocks.cshtml" />
+    <Content Include="Views\Customer\CustomerDetails.cshtml" />
+    <Content Include="Views\News\GetTopNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

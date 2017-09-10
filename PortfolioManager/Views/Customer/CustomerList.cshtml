@@ -1,4 +1,4 @@
-﻿@model PortfolioManager.ViewModels.CustomerListViewModel
+﻿@model IEnumerable<PortfolioManager.Models.Customer>
 
 @{
     ViewBag.Title = "CustomerListView";
@@ -11,14 +11,14 @@
     <tr>
         <th>Customer Id</th>
         <th>Customer Name</th>
-        <th>Customer Balance</th>
+        <th>Portfolio Id</th>
     </tr>
-    @foreach (var customer in Model.CustomerList)
+    @foreach (var customer in Model)
     {
         <tr>
             <td>@customer.CustomerId</td>
-            <td>@customer.CustomerName</td>
-            <td>@customer.CustomerBalance</td>
+            <td>@Html.ActionLink(@customer.CustomerName, "CustomerDetails", "Customer", new { id= @customer.CustomerId },null)</td>
+            <td>@customer.CustomerPortfolio.PortfolioId</td>
         </tr>
     }
 </table>
