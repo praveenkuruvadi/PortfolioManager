@@ -9,6 +9,6 @@ namespace PortfolioManager.ViewModels
 {
     public class StockListViewModel
     {
-        public List<EquityStock> StockList { get; set; }
+        public IEnumerable<EquityStock> StockList { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using PortfolioManager.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,16 @@ namespace PortfolioManager.Controllers
 {
     public class StockController : Controller
     {
+        private ApplicationDbContext _content;
+
+        public StockController()
+        {
+            _content = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _content.Dispose();
+        }
         // GET: Stock
         public ActionResult Index()
         {
@@ -26,6 +37,18 @@ namespace PortfolioManager.Controllers
             };
 
             return View(stocks);
+        }
+
+        public ActionResult PortfolioList()
+        {
+            var customers = _content.Customers.Include(x=>x.CustomerPortfolio);
+            return View(customers);
+        }
+
+        public ActionResult StockList(int id)
+        {
+            var customer = _content.Customers.Single(x => x.CustomerId == id);
+            return View(customer.CustomerPortfolio);
         }
     }
 }

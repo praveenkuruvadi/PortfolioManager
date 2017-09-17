@@ -9,19 +9,19 @@ namespace ApiTestApp
 {
     class Response
     {
-        [JsonProperty("1.open")]
+        [JsonProperty("open")]
         public decimal open { get; set; }
 
-        [JsonProperty("2.high")]
+        [JsonProperty("high")]
         public decimal high { get; set; }
 
-        [JsonProperty("3.low")]
+        [JsonProperty("low")]
         public decimal low { get; set; }
 
-        [JsonProperty("4.close")]
+        [JsonProperty("close")]
         public decimal close { get; set; }
 
-        [JsonProperty("5.volume")]
+        [JsonProperty("volume")]
         public int volume { get; set; }
     }
 }

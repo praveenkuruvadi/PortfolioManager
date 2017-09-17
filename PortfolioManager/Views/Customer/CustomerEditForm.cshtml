@@ -1,0 +1,28 @@
+﻿@model PortfolioManager.Models.Customer
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New/Edit Customer Form</h2>
+
+@using (Html.BeginForm("Create", "customer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerName)
+        @Html.TextBoxFor(m => m.CustomerName,new { @class = "form-control"})
+        @Html.ValidationMessageFor(m=>m.CustomerName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerBalance)
+        @Html.TextBoxFor(m => m.CustomerBalance, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.CustomerBalance)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerNumber)
+        @Html.TextBoxFor(m => m.CustomerNumber, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m=>m.CustomerId)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

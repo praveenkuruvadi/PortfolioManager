@@ -1,0 +1,44 @@
+﻿@model PortfolioManager.Models.Transaction
+@{
+    ViewBag.Title = "AddTransactionForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Transaction Form</h2>
+
+@using (Html.BeginForm("Add", "Transaction"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.PortfolioId)
+        @Html.TextBoxFor(m => m.PortfolioId,
+       new { @class = "form-control", @Value = ViewBag.PortfolioId, @readonly = "readonly"})
+        @Html.ValidationMessageFor(m => m.PortfolioId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Symbol)
+        @Html.TextBoxFor(m => m.Symbol, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Symbol)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Quantity)
+        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Quantity)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TransactionType)
+        @Html.TextBoxFor(m => m.TransactionType, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TransactionType)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TimeStamp)
+        @Html.TextBoxFor(m => m.TimeStamp, new { @class = "form-control", @Value = DateTime.Now })
+        @Html.ValidationMessageFor(m => m.TimeStamp)
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

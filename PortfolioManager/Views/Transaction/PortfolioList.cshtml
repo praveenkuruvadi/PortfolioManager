@@ -1,25 +1,23 @@
 ﻿@model IEnumerable<PortfolioManager.Models.Customer>
-
 @{
-    ViewBag.Title = "CustomerListView";
+    ViewBag.Title = "PortfolioList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customer List</h2>
+<h2>Portfolio List</h2>
 
 <table style="width:60%">
     <tr>
         <th>Customer Id</th>
         <th>Customer Name</th>
-        <th>Portfolio Id</th>
+        <th>Portfolio Value</th>
     </tr>
     @foreach (var customer in Model)
     {
         <tr>
             <td>@customer.CustomerId</td>
-            <td>@Html.ActionLink(@customer.CustomerName, "Edit", "Customer", new { id= @customer.CustomerId },null)</td>
-            <td>@customer.CustomerPortfolio.PortfolioId</td>
+            <td>@Html.ActionLink(@customer.CustomerName, "AddTransactionForm", "Transaction", new { id = @customer.CustomerPortfolio.PortfolioId }, null)</td>
+            <td>@customer.CustomerPortfolio.GetPortfolioValue()</td>
         </tr>
     }
 </table>
-

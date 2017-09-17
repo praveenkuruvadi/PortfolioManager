@@ -15,12 +15,16 @@ namespace PortfolioManager.Models
         [Key]
         [Required]
         public int CustomerId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Enter Name")]
+        [StringLength(255)]
+        [Display(Name ="Full Name")]
         public string CustomerName { get; set; }
         [Required]
+        [Display(Name ="Balance")]
         public decimal CustomerBalance { get; set; }
+        [Display(Name ="Phone Number")]
         public string CustomerNumber { get; set; }
-        public int PortfolioId { get; set; }
+        
 
         public decimal GetAssetsValue()
         {

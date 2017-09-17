@@ -15,14 +15,19 @@ namespace ApiTestApp
         static void Main(string[] args)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest
-                .Create(String.Format("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=demo"));
+                .Create(String.Format("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo"));
             HttpWebResponse res = (HttpWebResponse)request.GetResponse();
             if (res.StatusCode == HttpStatusCode.OK)
             {
                 Stream stream = res.GetResponseStream();
                 StreamReader reader = new StreamReader(stream, Encoding.UTF8);
 
-                var data = JObject.Parse(reader.ReadToEnd()).Last.First.Children().ToList().First().Children();
+                var data = JObject.Parse(reader.ReadToEnd()).Last.First.Children().ToList();
+                foreach(var elem in data)
+                {
+                    var json = elem;
+                    var Response = JsonConvert.DeserializeObject<Response>(elem.First.ToString());
+                }
                 var dict = JsonConvert.DeserializeObject<Dictionary<string, decimal>>(data.ToString());
                 Response res1 = JsonConvert.DeserializeObject<Response>(data.ToString().Trim());
                 //List<ResponseNewsJson> resClass = JsonConvert.DeserializeObject<List<ResponseNewsJson>>(data.ToString());

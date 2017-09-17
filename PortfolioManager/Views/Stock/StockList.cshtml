@@ -1,0 +1,60 @@
+﻿@model PortfolioManager.Models.Portfolio
+@{
+    ViewBag.Title = "StockList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Stock List</h2>
+
+<h2>Equity Stocks</h2>
+@{
+    if (Model.EquityStockList.Equals(null))
+    {
+        <p>No Equity Stocks</p>
+    }
+    else
+    {
+        <table style="width:60%">
+            <tr>
+                <th>Stock</th>
+                <th>Quantity</th>
+                <th>Purchase Price</th>
+            </tr>
+            @foreach (var stock in Model.EquityStockList)
+            {
+                <tr>
+                    <td>@stock.Symbol</td>
+                    <td>@stock.Quantity</td>
+                    <td>@stock.OriginalPrice</td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+<h2>Commodity Stocks</h2>
+@{
+    if (Model.CommodityStockList.Equals(null))
+    {
+        <p>No Commodity Stocks</p>
+    }
+    else
+    {
+        <table style="width:60%">
+            <tr>
+                <th>Stock</th>
+                <th>Quantity</th>
+                <th>Purchase Price</th>
+            </tr>
+            @foreach (var stock in Model.CommodityStockList)
+            {
+                <tr>
+                    <td>@stock.Symbol</td>
+                    <td>@stock.Quantity</td>
+                    <td>@stock.OriginalPrice</td>
+                </tr>
+            }
+        </table>
+    }
+}
+

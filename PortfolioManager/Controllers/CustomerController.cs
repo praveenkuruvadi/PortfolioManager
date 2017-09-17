@@ -39,5 +39,43 @@ namespace PortfolioManager.Controllers
             return View(customerDetail);
         }
 
+        public ActionResult New()
+        {
+            return View("CustomerEditForm");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _content.Customers.SingleOrDefault(c => c.CustomerId == id);
+            if (customer.Equals(null))
+                return HttpNotFound();
+
+            return View("CustomerEditForm",customer);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("CustomerEditForm");
+            }
+            if(customer.CustomerId == 0)
+            {
+                customer.CustomerPortfolio = new Portfolio();
+                customer.CustomerPortfolio.CustomerId = customer.CustomerId;
+                customer.CustomerPortfolio.PortfolioId = customer.CustomerId;
+                _content.Customers.Add(customer);
+            }
+            else
+            {
+                var CustomerInDb = _content.Customers.Single(c => c.CustomerId == customer.CustomerId);
+                CustomerInDb.CustomerBalance = customer.CustomerBalance;
+                CustomerInDb.CustomerNumber = customer.CustomerNumber;
+            }
+            _content.SaveChanges();
+            return RedirectToAction("CustomerList", "Customer");
+        }
+
     }
 }

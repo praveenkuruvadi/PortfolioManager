@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,9 +10,16 @@ namespace PortfolioManager.Models
 {
     public class Portfolio : IPortfolio
     {
-        public List<Trade> TradeHistory { get; set; }
-        public List<CommodityStock> CommodityStockList { get; set; }
-        public List<EquityStock> EquityStockList { get; set; }
+        public ICollection<Transaction> TransactionHistory { get; set; }
+        public ICollection<CommodityStock> CommodityStockList { get; set; }
+        public ICollection<EquityStock> EquityStockList { get; set; }
+
+        public Portfolio()
+        {
+            TransactionHistory = new List<Transaction>();
+            CommodityStockList = new List<CommodityStock>();
+            EquityStockList = new List<EquityStock>();
+        }
         [Key]
         [Required]
         public int PortfolioId { get; set; }
