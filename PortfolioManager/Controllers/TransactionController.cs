@@ -30,7 +30,8 @@ namespace PortfolioManager.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("AddTransactionForm",new { id = transaction.PortfolioId });
+                ViewBag.PortfolioId = transaction.PortfolioId;
+                return View("AddTransactionForm");
             }
             _content.Transactions.Add(transaction);
             _content.SaveChanges();
