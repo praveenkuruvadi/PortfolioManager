@@ -26,6 +26,8 @@ namespace PortfolioManager.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(Transaction transaction)
         {
             if (!ModelState.IsValid)
